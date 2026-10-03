@@ -21,9 +21,7 @@ export interface AuthContextType {
   user: GoogleUser | null;
   token: GoogleAuthToken | null;
   error: string | null;
-  isDemoMode: boolean;
   login: () => void;
   logout: () => void;
-  enterDemoMode: () => void;
   revokeAccess: () => Promise<void>;
 }

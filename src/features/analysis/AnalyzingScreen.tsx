@@ -12,25 +12,18 @@ export const AnalyzingScreen: React.FC<AnalyzingScreenProps> = ({
   progress,
 }) => {
   const steps = [
-    { id: 1, label: 'Product identified' },
-    { id: 2, label: 'Manufacturer information found' },
-    { id: 3, label: 'Reference information collected' },
-    { id: 4, label: 'Comparing visible features' },
-    { id: 5, label: 'Evaluating evidence (Laya WASM)' },
+    { id: 1, label: 'Identifying product markings' },
+    { id: 2, label: 'Searching manufacturer specifications' },
+    { id: 3, label: 'Comparing features against references' },
+    { id: 4, label: 'Calculating risk assessment' },
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0C0E] text-[#F5F5F5] flex flex-col justify-between px-6 py-12 max-w-md mx-auto select-none">
+    <div className="min-h-screen bg-[#0B0C0E] text-[#F5F5F5] flex flex-col justify-between px-6 py-14 max-w-md mx-auto select-none">
       {/* Top Header */}
       <div>
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-          <span className="text-[11px] font-mono tracking-widest text-[#A6A7AB] uppercase">
-            Analysis in Progress
-          </span>
-        </div>
         <h2 className="text-3xl font-semibold tracking-tight text-[#F5F5F5]">
-          ANALYZING
+          INVESTIGATING
         </h2>
       </div>
 
@@ -38,11 +31,11 @@ export const AnalyzingScreen: React.FC<AnalyzingScreenProps> = ({
       <div className="space-y-8 my-auto py-6">
         {/* Thumbnail Preview */}
         {imagePreview && (
-          <div className="w-28 h-28 mx-auto rounded-2xl glass-panel p-1.5 overflow-hidden shadow-md">
+          <div className="w-24 h-24 mx-auto rounded-xl border border-white/10 p-1 overflow-hidden bg-black/40">
             <img
               src={imagePreview}
-              alt="Analyzing product"
-              className="w-full h-full object-cover rounded-xl opacity-90"
+              alt="Inspecting product"
+              className="w-full h-full object-cover rounded-lg opacity-90"
             />
           </div>
         )}
@@ -58,7 +51,7 @@ export const AnalyzingScreen: React.FC<AnalyzingScreenProps> = ({
               <div
                 key={step.id}
                 className={`flex items-center gap-3.5 transition-all duration-300 ${
-                  isPending ? 'opacity-35' : 'opacity-100'
+                  isPending ? 'opacity-30' : 'opacity-100'
                 }`}
               >
                 <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
@@ -96,15 +89,15 @@ export const AnalyzingScreen: React.FC<AnalyzingScreenProps> = ({
         {/* Active Stage Detail */}
         <div className="text-center pt-2">
           <p className="text-xs font-mono text-[#A6A7AB] leading-relaxed">
-            {progress.message || 'Building assessment...'}
+            {progress.message || 'Examining product evidence...'}
           </p>
         </div>
       </div>
 
-      {/* Footer System Specs */}
-      <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-[#A6A7AB]/60">
-        <span>Step {progress.stepNumber} of 5</span>
-        <span>Local Client Inference</span>
+      {/* Footer Info */}
+      <div className="pt-6 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-[#A6A7AB]/60">
+        <span>Step {Math.min(progress.stepNumber, 4)} of 4</span>
+        <span>Reference verification active</span>
       </div>
     </div>
   );

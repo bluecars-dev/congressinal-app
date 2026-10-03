@@ -9,7 +9,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<GoogleUser | null>(null);
   const [token, setToken] = useState<GoogleAuthToken | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isDemoMode, setIsDemoMode] = useState<boolean>(false);
 
   useEffect(() => {
     // Check existing stored session
@@ -31,7 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     if (!GoogleOAuthService.isConfigured()) {
       setStatus('unauthenticated');
-      setError('GOOGLE_CLIENT_ID_REQUIRED');
+      setError('Google Sign-In is not configured in the application environment.');
       return;
     }
 
@@ -39,7 +38,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       (authToken, authUser) => {
         setToken(authToken);
         setUser(authUser);
-        setIsDemoMode(false);
         setStatus('authorized');
       },
       (err) => {
@@ -52,36 +50,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       try {
         GoogleOAuthService.requestToken();
       } catch (err: any) {
-        setError(err.message || 'Failed to trigger Google login popup');
+        setError(err.message || 'Failed to initialize Google sign-in window.');
         setStatus('unauthenticated');
       }
     }
-  };
-
-  const enterDemoMode = () => {
-    const demoUser: GoogleUser = {
-      id: 'demo-user-8849',
-      name: 'Authorized Reviewer',
-      email: 'verified.evaluator@google.auth',
-      picture: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
-    };
-    const demoToken: GoogleAuthToken = {
-      accessToken: 'demo_authorized_gemini_oauth_token_' + Date.now(),
-      expiresAt: Date.now() + 3600 * 1000,
-      scope: 'https://www.googleapis.com/auth/generative-language.retriever openid profile email',
-      tokenType: 'Bearer',
-    };
-    setUser(demoUser);
-    setToken(demoToken);
-    setIsDemoMode(true);
-    setStatus('authorized');
   };
 
   const logout = () => {
     GoogleOAuthService.clearStorage();
     setUser(null);
     setToken(null);
-    setIsDemoMode(false);
     setStatus('unauthenticated');
     setError(null);
   };
@@ -99,13 +77,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       user,
       token,
       error,
-      isDemoMode,
       login,
       logout,
-      enterDemoMode,
       revokeAccess,
     }),
-    [status, user, token, error, isDemoMode]
+    [status, user, token, error]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,20 +1,18 @@
 export type RiskTier = 'low' | 'medium' | 'high';
 
 export interface RiskResult {
-  low: number; // percentage integer 0-100
-  medium: number; // percentage integer 0-100
-  high: number; // percentage integer 0-100
+  low: number; // probability percentage 0-100
+  medium: number; // probability percentage 0-100
+  high: number; // probability percentage 0-100
   dominant: RiskTier;
   dominantPercentage: number;
-  executionTimeMs: number;
-  engine: string;
-  rubricSummary: string;
+  reasoning?: string;
 }
 
-export interface LayaStatePayload {
+export interface LayaEvidencePayload {
   product: {
     brand: string;
-    name: string;
+    product: string;
     model?: string;
     category?: string;
   };
@@ -32,14 +30,4 @@ export interface LayaStatePayload {
     severity: 'low' | 'medium' | 'high';
     finding: string;
   }>;
-}
-
-export interface LayaQuestionConfig {
-  type: 'choice';
-  instructions: string;
-  criteria: {
-    low: string;
-    medium: string;
-    high: string;
-  };
 }

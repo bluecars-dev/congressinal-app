@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProductAssessment } from '../../types/product';
-import { Scan, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Scan, ChevronRight } from 'lucide-react';
 
 interface HomeScreenProps {
   onOpenScanner: () => void;
@@ -23,27 +23,25 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
   return (
     <div className="flex-1 flex flex-col justify-between px-6 py-6 max-w-md mx-auto w-full select-none">
-      {/* Brand & Mission Statement */}
+      {/* Title & Direction */}
       <div className="pt-4 space-y-4">
         <h1 className="text-4xl font-semibold tracking-tight leading-[1.1] text-[#F5F5F5]">
           VERIFY<br />PRODUCT
         </h1>
 
         <p className="text-base text-[#A6A7AB] font-normal leading-relaxed">
-          Know what you&apos;re looking at.<br />
-          Understand the evidence.
+          Evidence before<br />assumptions.
         </p>
       </div>
 
-      {/* Dominant SCAN Interactive Area */}
-      <div className="my-auto py-8 flex flex-col items-center space-y-6">
-        {/* Dominant Scan Action Container */}
+      {/* Prominent Core Scan Action */}
+      <div className="my-auto py-8 flex flex-col items-center space-y-5">
         <button
           type="button"
           onClick={onOpenScanner}
-          className="w-full aspect-[16/10] max-h-52 rounded-3xl glass-panel-interactive flex flex-col items-center justify-center gap-3 p-6 text-center border border-white/15 group shadow-2xl relative overflow-hidden"
+          className="w-full aspect-[16/10] max-h-52 rounded-3xl glass-panel-interactive flex flex-col items-center justify-center gap-3.5 p-6 text-center border border-white/15 group shadow-2xl relative overflow-hidden active:scale-[0.985] transition-all"
         >
-          {/* Subtle Corner Markers */}
+          {/* Subtle Corner Reticle Accents */}
           <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-white/30 rounded-tl-md" />
           <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-white/30 rounded-tr-md" />
           <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-white/30 rounded-bl-md" />
@@ -54,12 +52,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </div>
 
           <span className="text-lg font-semibold tracking-wide text-[#F5F5F5] uppercase font-mono">
-            SCAN
+            SCAN PRODUCT
           </span>
         </button>
 
         <p className="text-xs text-[#A6A7AB] text-center font-normal leading-relaxed max-w-xs">
-          Analyze products for authenticity, risk &amp; safety.
+          Photograph a product to examine physical markings, packaging, and manufacturer reference records.
         </p>
       </div>
 

@@ -1,12 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiskResult } from '../../types/risk';
-import { Cpu } from 'lucide-react';
 
 interface RiskScoreProps {
   risk: RiskResult;
 }
 
 export const RiskScore: React.FC<RiskScoreProps> = ({ risk }) => {
+  const [animatedPercentages, setAnimatedPercentages] = useState({
+    dominant: 0,
+    low: 0,
+    medium: 0,
+    high: 0,
+  });
+
+  // Micro-interaction: Smooth counter and bar animation on mount
+  useEffect(() => {
+    // Check user preference for reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      setAnimatedPercentages({
+        dominant: risk.dominantPercentage,
+        low: risk.low,
+        medium: risk.medium,
+        high: risk.high,
+      });
+      return;
+    }
+
+    const duration = 650;
+    const start = performance.now();
+
+    const frame = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(1, elapsed / duration);
+      // Ease out cubic
+      const ease = 1 - Math.pow(1 - progress, 3);
+
+      setAnimatedPercentages({
+        dominant: Math.round(ease * risk.dominantPercentage),
+        low: Math.round(ease * risk.low),
+        medium: Math.round(ease * risk.medium),
+        high: Math.round(ease * risk.high),
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(frame);
+      }
+    };
+
+    const animId = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(animId);
+  }, [risk.dominantPercentage, risk.low, risk.medium, risk.high]);
+
   const getRiskColor = (tier: string) => {
     switch (tier) {
       case 'low':
@@ -24,72 +70,85 @@ export const RiskScore: React.FC<RiskScoreProps> = ({ risk }) => {
   const tierLabel = `${risk.dominant.toUpperCase()} RISK`;
 
   return (
-    <div className="glass-panel rounded-3xl p-6 border border-white/12 space-y-5">
-      <div className="flex items-center justify-between">
-        <span className="text-[11px] font-mono tracking-widest text-[#A6A7AB] uppercase">
-          Risk Assessment
-        </span>
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[10px] font-mono text-[#A6A7AB]">
-          <Cpu className="w-3 h-3 text-[#A6A7AB]" />
-          <span>Laya WASM &middot; {risk.executionTimeMs}ms</span>
-        </div>
-      </div>
-
-      {/* Hero Dominant Percentage */}
+    <div className="py-2 space-y-5 border-y border-white/[0.08]">
+      {/* Top Assessment Overview */}
       <div className="space-y-1">
-        <div
-          className="text-xs font-semibold tracking-wider font-mono"
-          style={{ color: riskColor }}
-        >
-          {tierLabel}
+        <div className="flex items-center justify-between">
+          <span
+            className="text-xs font-mono font-semibold tracking-wider uppercase"
+            style={{ color: riskColor }}
+          >
+            {tierLabel}
+          </span>
+          <span className="text-[11px] font-mono text-[#A6A7AB]">
+            Risk Assessment
+          </span>
         </div>
-        <div className="text-6xl font-bold tracking-tight text-[#F5F5F5] font-mono">
-          {risk.dominantPercentage}%
+
+        {/* Large Dominant Percentage */}
+        <div className="flex items-baseline gap-2">
+          <span className="text-6xl font-bold tracking-tight text-[#F5F5F5] font-mono leading-none">
+            {animatedPercentages.dominant}%
+          </span>
         </div>
+        <p className="text-[11px] text-[#A6A7AB] font-mono pt-0.5">
+          Counterfeit-risk assessment
+        </p>
       </div>
 
-      {/* Clean Horizontal Segmented Bar (NO PIE CHARTS) */}
+      {/* Clean Horizontal Distribution Bar */}
       <div className="space-y-2.5 pt-1">
-        <div className="h-2 w-full rounded-full bg-white/[0.08] overflow-hidden flex gap-1 p-0.5">
+        <div className="h-1.5 w-full rounded-full bg-white/[0.06] overflow-hidden flex gap-0.5">
           <div
-            className="h-full rounded-full transition-all duration-700 ease-out"
+            className="h-full rounded-full transition-all duration-500 ease-out"
             style={{
-              width: `${risk.low}%`,
+              width: `${animatedPercentages.low}%`,
               backgroundColor: '#4ADE80',
             }}
-            title={`Low Risk: ${risk.low}%`}
           />
           <div
-            className="h-full rounded-full transition-all duration-700 ease-out"
+            className="h-full rounded-full transition-all duration-500 ease-out"
             style={{
-              width: `${risk.medium}%`,
+              width: `${animatedPercentages.medium}%`,
               backgroundColor: '#FBBF24',
             }}
-            title={`Medium Risk: ${risk.medium}%`}
           />
           <div
-            className="h-full rounded-full transition-all duration-700 ease-out"
+            className="h-full rounded-full transition-all duration-500 ease-out"
             style={{
-              width: `${risk.high}%`,
+              width: `${animatedPercentages.high}%`,
               backgroundColor: '#FB7185',
             }}
-            title={`High Risk: ${risk.high}%`}
           />
         </div>
 
-        {/* Breakdown Values */}
-        <div className="grid grid-cols-3 text-[11px] font-mono pt-1 text-[#A6A7AB]">
+        {/* Statistical Probability Breakdown */}
+        <div className="grid grid-cols-3 text-left pt-1 gap-2 font-mono">
           <div>
-            <div className="text-[10px] text-[#A6A7AB]/70 uppercase">Low</div>
-            <div className="text-[#F5F5F5] font-medium mt-0.5">{risk.low}%</div>
+            <div className="text-sm font-semibold text-[#F5F5F5]">
+              {animatedPercentages.low}%
+            </div>
+            <div className="text-[10px] text-[#A6A7AB] leading-tight mt-0.5">
+              Low-risk probability
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-[10px] text-[#A6A7AB]/70 uppercase">Medium</div>
-            <div className="text-[#F5F5F5] font-medium mt-0.5">{risk.medium}%</div>
+
+          <div>
+            <div className="text-sm font-semibold text-[#F5F5F5]">
+              {animatedPercentages.medium}%
+            </div>
+            <div className="text-[10px] text-[#A6A7AB] leading-tight mt-0.5">
+              Medium-risk probability
+            </div>
           </div>
-          <div className="text-right">
-            <div className="text-[10px] text-[#A6A7AB]/70 uppercase">High</div>
-            <div className="text-[#F5F5F5] font-medium mt-0.5">{risk.high}%</div>
+
+          <div>
+            <div className="text-sm font-semibold text-[#F5F5F5]">
+              {animatedPercentages.high}%
+            </div>
+            <div className="text-[10px] text-[#A6A7AB] leading-tight mt-0.5">
+              High-risk probability
+            </div>
           </div>
         </div>
       </div>

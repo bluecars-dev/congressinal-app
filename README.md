@@ -17,7 +17,7 @@ GEMINI RESEARCHES (Multimodal vision + Google Search Grounding)
         ↓
 STRUCTURED EVIDENCE (Matches, Differences, Unverified)
         ↓
-LAYA WASM (Local client-side System-1 non-autoregressive forward pass ~33ms)
+RISK EVALUATION (Structured evidence decision engine)
         ↓
 RISK ASSESSMENT (Low %, Medium %, High % probabilities)
         ↓
@@ -38,10 +38,9 @@ TRANSPARENT REPORT (Feature comparison + Conditional Health/Safety + Authoritati
    - Authorizes the `https://www.googleapis.com/auth/generative-language.retriever` scope directly.
    - Zero API-key input textboxes in the UI. No fake/local credentials or Supabase.
 
-3. **Laya AI WASM Local Decision Engine**:
-   - Laya is **not** the vision model.
-   - Gemini gathers evidence; Laya executes locally in the browser via WebAssembly (`wasm32`).
-   - Non-autoregressive forward pass computes calibrated probability distributions (`low`, `medium`, `high`) in ~33ms.
+3. **Structured Evidence Risk Decision Layer**:
+   - Clear separation between Gemini multimodal evidence extraction and local structured-evidence risk evaluation.
+   - Computes calibrated probability distributions (`low`, `medium`, `high`) directly from verified observations.
 
 4. **Liquid-Glass Aesthetic**:
    - Palette: Dark neutral `#0B0C0E`, translucent glass `rgba(255,255,255,0.07)`, thin borders `rgba(255,255,255,0.12)`.
@@ -80,8 +79,7 @@ src/
 │   │   ├── GeminiAnalyzer.ts   # Multimodal prompt & Search Grounding pipeline
 │   │   └── AnalyzingScreen.tsx # Step-by-step progress checklist
 │   ├── risk/
-│   │   ├── llama-web-bridge.ts # WebAssembly System-1 decision runtime
-│   │   └── LayaModel.ts        # Laya engine coordinator & rubric evaluation
+│   │   └── RiskEngine.ts       # Structured evidence decision evaluation
 │   ├── report/
 │   │   ├── ReportScreen.tsx    # Hero assessment report
 │   │   ├── RiskScore.tsx       # Segmented probability visualization (No pie charts)
