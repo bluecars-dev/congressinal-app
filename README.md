@@ -9,7 +9,7 @@ A premium, mobile-first web application engineered for evidence-based counterfei
 ```
 SIGN IN WITH GOOGLE
         ↓
-AUTHORIZE GEMINI (generative-language scope)
+AUTHORIZE GEMINI (generative-language.retriever scope)
         ↓
    SCAN PRODUCT (Live camera reticle or gallery)
         ↓
@@ -35,7 +35,7 @@ TRANSPARENT REPORT (Feature comparison + Conditional Health/Safety + Authoritati
 
 2. **Official Google OAuth 2.0**:
    - Strict adherence to Google Identity Services (GIS) Web SDK.
-   - Authorizes the `https://www.googleapis.com/auth/generative-language` scope directly.
+   - Authorizes the `https://www.googleapis.com/auth/generative-language.retriever` scope directly.
    - Zero API-key input textboxes in the UI. No fake/local credentials or Supabase.
 
 3. **Laya AI WASM Local Decision Engine**:

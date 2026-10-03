@@ -1,16 +1,8 @@
 import { GoogleAuthToken, GoogleUser } from '../types/auth';
 
-// Google Generative Language API scopes
+// Google Gemini API OAuth scopes (generative-language.retriever for Gemini API access)
 export const GEMINI_OAUTH_SCOPES = [
-  'https://www.googleapis.com/auth/generative-language',
-  'openid',
-  'profile',
-  'email',
-].join(' ');
-
-// Fallback Google Cloud scope if user configured Cloud Platform API
-export const GEMINI_FALLBACK_SCOPES = [
-  'https://www.googleapis.com/auth/cloud-platform',
+  'https://www.googleapis.com/auth/generative-language.retriever',
   'openid',
   'profile',
   'email',

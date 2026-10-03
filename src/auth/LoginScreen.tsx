@@ -113,7 +113,7 @@ export const LoginScreen: React.FC = () => {
 
             <p className="text-xs text-[#A6A7AB] leading-relaxed">
               To connect your live Google Cloud project, enter your OAuth 2.0 Client ID below.
-              Required scope: <code className="text-[#F5F5F5] font-mono text-[11px]">generative-language</code>.
+              Required scope: <code className="text-[#F5F5F5] font-mono text-[11px]">generative-language.retriever</code>.
             </p>
 
             <form onSubmit={handleSaveClientId} className="space-y-3">

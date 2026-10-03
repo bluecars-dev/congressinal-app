@@ -68,7 +68,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const demoToken: GoogleAuthToken = {
       accessToken: 'demo_authorized_gemini_oauth_token_' + Date.now(),
       expiresAt: Date.now() + 3600 * 1000,
-      scope: 'https://www.googleapis.com/auth/generative-language openid profile email',
+      scope: 'https://www.googleapis.com/auth/generative-language.retriever openid profile email',
       tokenType: 'Bearer',
     };
     setUser(demoUser);
