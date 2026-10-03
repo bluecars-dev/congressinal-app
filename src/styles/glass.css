@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #0B0C0E;
+  --glass-primary: rgba(255, 255, 255, 0.07);
+  --glass-secondary: rgba(255, 255, 255, 0.045);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-subtle: rgba(255, 255, 255, 0.08);
+  --glass-border-focus: rgba(255, 255, 255, 0.22);
+  --text-primary: #F5F5F5;
+  --text-secondary: #A6A7AB;
+  --risk-low: #4ADE80;
+  --risk-medium: #FBBF24;
+  --risk-high: #FB7185;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glass Surfaces */
+.glass-panel {
+  background-color: var(--glass-primary);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-panel-subtle {
+  background-color: var(--glass-secondary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border-subtle);
+}
+
+.glass-panel-interactive {
+  background-color: var(--glass-primary);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.15s ease-out;
+}
+
+.glass-panel-interactive:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+  border-color: var(--glass-border-focus);
+}
+
+.glass-panel-interactive:active {
+  transform: scale(0.985);
+  background-color: rgba(255, 255, 255, 0.11);
+}
+
+/* Custom scrollbars for clean aesthetic */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Safe area insets for mobile devices */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 16px);
+}
