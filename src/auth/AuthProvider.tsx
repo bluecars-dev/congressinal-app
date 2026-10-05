@@ -1,8 +1,48 @@
+// Replaced AuthProvider with AccessProvider handling privacy consent and Gemini API key.
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
-import { AuthContextType, AuthStatus, GoogleAuthToken, GoogleUser } from '../types/auth';
-import { GoogleOAuthService } from './GoogleOAuth';
+import { AppAccessState } from '../types/appAccessState';
+import { getPrivacyConsent } from '../settings/privacyStorage';
+import { getGeminiKey } from '../settings/apiKeyStorage';
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export type AccessContextType = {
+  accessState: AppAccessState;
+  setAccessState: React.Dispatch<React.SetStateAction<AppAccessState>>;
+};
+
+const AccessContext = createContext<AccessContextType | undefined>(undefined);
+
+export const AccessProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [accessState, setAccessState] = useState<AppAccessState>('privacy_required');
+
+  useEffect(() => {
+    const consent = getPrivacyConsent();
+    if (!consent) {
+      setAccessState('privacy_required');
+      return;
+    }
+    const apiKey = getGeminiKey();
+    if (!apiKey) {
+      setAccessState('api_key_required');
+    } else {
+      setAccessState('ready');
+    }
+  }, []);
+
+  const value = useMemo(() => ({ accessState, setAccessState }), [accessState]);
+
+  return <AccessContext.Provider value={value}>{children}</AccessContext.Provider>;
+};
+
+export const useAccess = (): AccessContextType => {
+  const context = useContext(AccessContext);
+  if (!context) {
+    throw new Error('useAccess must be used within AccessProvider');
+  }
+  return context;
+};
+
+// Removed old AuthContext and types – only AccessProvider is exported now.
+
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [status, setStatus] = useState<AuthStatus>('loading');
