@@ -1,6 +1,6 @@
 // src/onboarding/ApiKeySetupScreen.tsx
 import React, { useState, useEffect } from 'react';
-import { getGeminiKey, setGeminiKey, clearGeminiKey } from '../settings/apiKeyStorage';
+import { getGeminiKey, setGeminiKey, removeGeminiKey } from '../settings/apiKeyStorage';
 import { useAccess } from '../auth/AuthProvider';
 
 /** Simple client‑side validation: attempt a tiny Gemini generateContent request. */
@@ -47,7 +47,7 @@ export const ApiKeySetupScreen: React.FC = () => {
   };
 
   const handleClear = () => {
-    clearGeminiKey();
+    removeGeminiKey();
     setKey('');
     setAccessState('api_key_required');
   };

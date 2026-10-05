@@ -2,10 +2,10 @@ import React from 'react';
 import { useAuth } from './AuthProvider';
 import { GoogleSignInButton } from '../components/GoogleSignInButton';
 import { GoogleOAuthService } from './GoogleOAuth';
-import { AlertCircle } from 'lucide-react';
+
 
 export const LoginScreen: React.FC = () => {
-  const { login, status, error } = useAuth();
+  const { login, status } = useAuth();
 
   const handleGoogleClick = () => {
     login();
@@ -26,20 +26,11 @@ export const LoginScreen: React.FC = () => {
 
       {/* Main Sign-In Action */}
       <div className="w-full space-y-4 my-auto py-8">
-        {error && (
-          <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-[#E5E7EB] flex items-start gap-2.5">
-            <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#FB7185]" />
-            <div className="leading-snug text-[#A6A7AB]">
-              {error === 'GOOGLE_CLIENT_ID_REQUIRED'
-                ? 'Google Sign-In is not configured in the application environment.'
-                : error}
-            </div>
-          </div>
-        )}
+
 
         <GoogleSignInButton
           onClick={handleGoogleClick}
-          loading={status === 'authenticating'}
+
         />
 
         <p className="text-center text-xs text-[#A6A7AB] pt-1">

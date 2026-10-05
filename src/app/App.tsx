@@ -57,7 +57,6 @@ const MainAppContent: React.FC = () => {
       const result = await GeminiAnalyzer.analyzeProduct(
         base64Image,
         mimeType,
-        undefined, // token not needed – Gemini key is read internally
         (progress) => setAnalysisProgress(progress)
       );
       ScanStorage.saveScan(result);

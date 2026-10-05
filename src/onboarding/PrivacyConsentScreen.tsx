@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAccess } from '../../auth/AuthProvider';
-import { setPrivacyConsent } from '../../settings/privacyStorage';
-import { Link } from 'react-router-dom';
+import { setPrivacyConsent } from '../settings/privacyStorage';
+// Use simple anchor instead of react-router-dom Link
+const Link = ({ to, children, ...props }) => (<a href={to} {...props}>{children}</a>);
 
 export const PrivacyConsentScreen: React.FC = () => {
   const { setAccessState } = useAccess();
