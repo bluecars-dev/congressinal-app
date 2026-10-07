@@ -92,7 +92,7 @@ export const RiskScore: React.FC<RiskScoreProps> = ({ risk }) => {
           </span>
         </div>
         <p className="text-[11px] text-[#A6A7AB] font-mono pt-0.5">
-          Counterfeit-risk assessment
+          Confidence
         </p>
       </div>
 

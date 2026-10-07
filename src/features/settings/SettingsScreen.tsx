@@ -1,15 +1,16 @@
 // src/features/settings/SettingsScreen.tsx
-import React from 'react';
+import type { FC, AnchorHTMLAttributes } from 'react';
 import { useAccess } from '../../auth/AuthProvider';
 import { removeGeminiKey } from '../../settings/apiKeyStorage';
 import { clearUsageStats } from '../../usage/UsageTracker';
-import React from 'react';
-type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & { to: string };
-const Link: React.FC<LinkProps> = ({ to, children, ...props }) => (
+
+type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { to: string };
+
+const Link: FC<LinkProps> = ({ to, children, ...props }) => (
   <a href={to} {...props}>{children}</a>
 );
 
-export const SettingsScreen: React.FC = () => {
+export const SettingsScreen: FC = () => {
   const { setAccessState } = useAccess();
 
   const handleClearKey = () => {
