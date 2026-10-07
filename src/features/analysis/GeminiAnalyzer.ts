@@ -370,6 +370,14 @@ ${visualObservations
 Authoritative Web Content:
 ${webContent}
 
+
+Possible Health Concerns:
+- Hazardous ingredients like nicotine, lead, mercury, or other toxic substances
+- Allergens like peanuts, gluten, or shellfish
+- Safety warnings like choking hazards, flammability, or electrical risks
+- Usage instructions like dosage, frequency, or age restrictions
+
+
 Return ONLY a JSON object matching this structure:
 
 {
