@@ -75,23 +75,23 @@ export const RiskScore: React.FC<RiskScoreProps> = ({ risk }) => {
       <div className="space-y-1">
         <div className="flex items-center justify-between">
           <span
-            className="text-xs font-mono font-semibold tracking-wider uppercase"
+            className="text-xs  font-semibold tracking-wider uppercase"
             style={{ color: riskColor }}
           >
             {tierLabel}
           </span>
-          <span className="text-[11px] font-mono text-[#A6A7AB]">
-            Risk Assessment
+          <span className="text-[11px]  text-[#A6A7AB]">
+        
           </span>
         </div>
 
         {/* Large Dominant Percentage */}
         <div className="flex items-baseline gap-2">
-          <span className="text-6xl font-bold tracking-tight text-[#F5F5F5] font-mono leading-none">
+          <span className="text-6xl font-bold tracking-tight text-[#F5F5F5]  leading-none">
             {animatedPercentages.dominant}%
           </span>
         </div>
-        <p className="text-[11px] text-[#A6A7AB] font-mono pt-0.5">
+        <p className="text-[11px] text-[#A6A7AB]  pt-0.5">
           Confidence
         </p>
       </div>
@@ -123,7 +123,7 @@ export const RiskScore: React.FC<RiskScoreProps> = ({ risk }) => {
         </div>
 
         {/* Statistical Probability Breakdown */}
-        <div className="grid grid-cols-3 text-left pt-1 gap-2 font-mono">
+        <div className="grid grid-cols-3 text-left pt-1 gap-2 ">
           <div>
             <div className="text-sm font-semibold text-[#F5F5F5]">
               {animatedPercentages.low}%

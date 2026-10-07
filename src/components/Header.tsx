@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
               className="w-7 h-7 rounded-full object-cover border border-white/15"
             />
           ) : (
-            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-xs font-mono text-[#F5F5F5] border border-white/10">
+            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-xs  text-[#F5F5F5] border border-white/10">
               {user?.name ? user.name.charAt(0).toUpperCase() : <User className="w-3.5 h-3.5 text-[#A6A7AB]" />}
             </div>
           )}

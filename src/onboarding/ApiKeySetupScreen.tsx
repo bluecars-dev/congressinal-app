@@ -69,7 +69,7 @@ export const ApiKeySetupScreen: React.FC = () => {
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-[11px] font-mono tracking-widest text-[#A6A7AB] uppercase mb-3">
+          <p className="text-[11px]  tracking-widest text-[#A6A7AB] uppercase mb-3">
             One-time setup
           </p>
 

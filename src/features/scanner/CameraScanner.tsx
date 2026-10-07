@@ -125,7 +125,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({ onCapture, onClose
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-xs font-mono tracking-widest text-[#A6A7AB] uppercase">
+        <span className="text-xs  tracking-widest text-[#A6A7AB] uppercase">
           Scanner
         </span>
 
@@ -178,7 +178,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({ onCapture, onClose
 
           {/* Framing Guidance Label */}
           <div className="pt-2 text-center">
-            <span className="text-[11px] font-mono tracking-wider text-white/80 uppercase px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+            <span className="text-[11px]  tracking-wider text-white/80 uppercase px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
               Position product inside frame
             </span>
           </div>
@@ -265,22 +265,22 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({ onCapture, onClose
               <h3 className="font-medium text-sm text-[#F5F5F5]">Best Scanning Results</h3>
               <button
                 onClick={() => setShowTipsModal(false)}
-                className="text-[#A6A7AB] hover:text-[#F5F5F5] text-xs font-mono"
+                className="text-[#A6A7AB] hover:text-[#F5F5F5] text-xs "
               >
                 &times; Close
               </button>
             </div>
             <ul className="text-xs text-[#A6A7AB] space-y-2.5 leading-relaxed">
               <li className="flex items-start gap-2">
-                <span className="text-[#F5F5F5] font-mono">1.</span>
+                <span className="text-[#F5F5F5] ">1.</span>
                 <span>Include brand logos, model markings, tags, or serial numbers in clear focus.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#F5F5F5] font-mono">2.</span>
+                <span className="text-[#F5F5F5] ">2.</span>
                 <span>Avoid glare and harsh reflections on glossy plastic or packaging foil.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#F5F5F5] font-mono">3.</span>
+                <span className="text-[#F5F5F5] ">3.</span>
                 <span>Ensure packaging barcodes and nutrition/drug facts tables are fully legible.</span>
               </li>
             </ul>

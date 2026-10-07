@@ -20,7 +20,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({ isOpen, onClose }) =
           <h3 className="font-medium text-sm text-[#F5F5F5]">Account</h3>
           <button
             onClick={onClose}
-            className="text-[#A6A7AB] hover:text-[#F5F5F5] text-xs font-mono p-1"
+            className="text-[#A6A7AB] hover:text-[#F5F5F5] text-xs  p-1"
             aria-label="Close account menu"
           >
             <X className="w-4 h-4" />
@@ -36,7 +36,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({ isOpen, onClose }) =
               className="w-10 h-10 rounded-full object-cover border border-white/10"
             />
           ) : (
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-mono font-medium text-[#F5F5F5]">
+            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs  font-medium text-[#F5F5F5]">
               {user?.name ? user.name.charAt(0).toUpperCase() : <User className="w-4 h-4 text-[#A6A7AB]" />}
             </div>
           )}
@@ -45,7 +45,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({ isOpen, onClose }) =
             <div className="text-xs font-medium text-[#F5F5F5] truncate">
               {user?.name || 'Google User'}
             </div>
-            <div className="text-[11px] font-mono text-[#A6A7AB] truncate">
+            <div className="text-[11px]  text-[#A6A7AB] truncate">
               {user?.email}
             </div>
           </div>

@@ -52,13 +52,13 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         <button
           onClick={onBack}
           type="button"
-          className="flex items-center gap-2 text-xs font-mono text-[#A6A7AB] hover:text-[#F5F5F5] transition-colors"
+          className="flex items-center gap-2 text-xs  text-[#A6A7AB] hover:text-[#F5F5F5] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back</span>
         </button>
 
-        <span className="text-[11px] font-mono tracking-widest text-[#A6A7AB] uppercase">
+        <span className="text-[11px]  tracking-widest text-[#A6A7AB] uppercase">
           Investigation Report
         </span>
 
@@ -88,14 +88,14 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
             )}
 
             <div className="space-y-1 min-w-0 flex-1">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-[#A6A7AB] block">
+              <span className="text-[10px]  tracking-widest uppercase text-[#A6A7AB] block">
                 PRODUCT IDENTIFIED
               </span>
               <h1 className="text-xl font-bold tracking-tight text-[#F5F5F5] leading-snug">
                 {assessment.productIdentification.brand} {assessment.productIdentification.product}
               </h1>
               {assessment.productIdentification.model && (
-                <p className="text-xs text-[#A6A7AB] font-mono">
+                <p className="text-xs text-[#A6A7AB] ">
                   {assessment.productIdentification.model}
                 </p>
               )}
@@ -109,12 +109,12 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         {/* Evidence Findings Section */}
         <div className="space-y-3 pt-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#A6A7AB]">
-              EVIDENCE FINDINGS ({assessment.evidence.length})
+            <span className="text-xs  font-semibold tracking-wider text-[#A6A7AB]">
+              Evidence Findings ({assessment.evidence.length})
             </span>
 
             {/* Filter buttons */}
-            <div className="flex items-center gap-1.5 text-[10px] font-mono">
+            <div className="flex items-center gap-1.5 text-[10px] ">
               <button
                 onClick={() => setFilter('all')}
                 className={`px-2 py-0.5 rounded transition-colors ${
@@ -178,7 +178,7 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         <SourcesSection sources={assessment.sources} />
 
         {/* Evidence Screening Protocol Notice */}
-        <div className="pt-2 pb-1 text-[11px] font-mono text-[#A6A7AB]/70 leading-relaxed border-t border-white/[0.06]">
+        <div className="pt-2 pb-1 text-[11px]  text-[#A6A7AB]/70 leading-relaxed border-t border-white/[0.06]">
           Evidence-based screening assessment. This system does not claim to definitively prove authenticity or counterfeitness. All probabilities are calculated from visible physical markings compared against public authoritative references.
         </div>
 
@@ -187,7 +187,7 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
           <button
             type="button"
             onClick={onNewScan}
-            className="w-full py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase font-mono hover:bg-[#ececec] active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg"
+            className="w-full py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase  hover:bg-[#ececec] active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg"
           >
             <Scan className="w-4 h-4" />
             <span>Scan Another Product</span>

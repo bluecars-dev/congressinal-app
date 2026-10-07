@@ -13,20 +13,20 @@ export const EvidenceItem: React.FC<EvidenceItemProps> = ({ evidence }) => {
     switch (evidence.status) {
       case 'match':
         return (
-          <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-[#4ADE80] px-2 py-0.5 rounded bg-[#4ADE80]/10 border border-[#4ADE80]/20">
+          <span className="text-[10px]  font-semibold tracking-wider  text-[#4ADE80] px-2 py-0.5 rounded bg-[#4ADE80]/10 border border-[#4ADE80]/20">
             Match
           </span>
         );
       case 'difference':
         return (
-          <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-[#FB7185] px-2 py-0.5 rounded bg-[#FB7185]/10 border border-[#FB7185]/20">
+          <span className="text-[10px]  font-semibold tracking-wider  text-[#FB7185] px-2 py-0.5 rounded bg-[#FB7185]/10 border border-[#FB7185]/20">
             Difference
           </span>
         );
       case 'unverified':
       default:
         return (
-          <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-[#FBBF24] px-2 py-0.5 rounded bg-[#FBBF24]/10 border border-[#FBBF24]/20">
+          <span className="text-[10px]  font-semibold tracking-wider  text-[#FBBF24] px-2 py-0.5 rounded bg-[#FBBF24]/10 border border-[#FBBF24]/20">
             Unverified
           </span>
         );
@@ -44,7 +44,7 @@ export const EvidenceItem: React.FC<EvidenceItemProps> = ({ evidence }) => {
         <div className="space-y-1.5 flex-1 min-w-0">
           {/* 1. What was examined + 3. Match state */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#F5F5F5]">
+            <span className="text-xs  font-semibold  tracking-wider text-[#F5F5F5]">
               {evidence.feature}
             </span>
             {getStatusBadge()}
@@ -57,7 +57,7 @@ export const EvidenceItem: React.FC<EvidenceItemProps> = ({ evidence }) => {
 
           {/* 4. Where the evidence came from */}
           {evidence.source && (
-            <div className="pt-1 text-[11px] font-mono text-[#A6A7AB] flex items-center gap-1.5">
+            <div className="pt-1 text-[11px]  text-[#A6A7AB] flex items-center gap-1.5">
               <span className="uppercase text-[9px] text-[#A6A7AB]/70 tracking-wider">Source:</span>
               <span className="truncate">{evidence.source}</span>
             </div>
@@ -78,10 +78,10 @@ export const EvidenceItem: React.FC<EvidenceItemProps> = ({ evidence }) => {
       {isExpanded && (
         <div className="px-4 pb-4 pt-2 border-t border-white/[0.06] bg-black/20 space-y-3.5 text-xs animate-fade-in">
           {/* Finding -> Reference -> Source chain */}
-          <div className="space-y-2 pt-1 font-mono text-[11px]">
+          <div className="space-y-2 pt-1  text-[11px]">
             {/* Finding */}
             <div className="p-3 rounded-lg bg-white/[0.03] border border-white/[0.06] space-y-1">
-              <div className="text-[9px] uppercase tracking-widest text-[#A6A7AB]">Finding</div>
+              <div className="text-[9px] tracking-widest text-[#A6A7AB]">Finding</div>
               <div className="text-[#F5F5F5] font-sans text-xs">{evidence.finding}</div>
             </div>
 
@@ -91,7 +91,7 @@ export const EvidenceItem: React.FC<EvidenceItemProps> = ({ evidence }) => {
 
             {/* Reference */}
             <div className="p-3 rounded-lg bg-white/[0.03] border border-white/[0.06] space-y-1">
-              <div className="text-[9px] uppercase tracking-widest text-[#A6A7AB]">Documented Reference</div>
+              <div className="text-[9px] tracking-widest text-[#A6A7AB]">Reference</div>
               <div className="text-[#E5E7EB] font-sans text-xs">
                 {evidence.referenceInfo || 'Manufacturer standard specification'}
               </div>
@@ -103,7 +103,7 @@ export const EvidenceItem: React.FC<EvidenceItemProps> = ({ evidence }) => {
 
             {/* Source */}
             <div className="p-3 rounded-lg bg-white/[0.03] border border-white/[0.06] space-y-1">
-              <div className="text-[9px] uppercase tracking-widest text-[#A6A7AB]">Authoritative Source</div>
+              <div className="text-[9px] tracking-widest text-[#A6A7AB]">Source</div>
               <div className="text-[#E5E7EB] font-sans text-xs">
                 {evidence.source || 'Official product specifications'}
               </div>

@@ -38,7 +38,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
           <button
             type="button"
             onClick={onClearHistory}
-            className="text-[11px] font-mono text-[#A6A7AB] hover:text-[#FB7185] transition-colors flex items-center gap-1.5"
+            className="text-[11px]  text-[#A6A7AB] hover:text-[#FB7185] transition-colors flex items-center gap-1.5"
             title="Clear scan history"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -47,8 +47,8 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
         )}
       </div>
 
-      <p className="text-xs text-[#A6A7AB] mt-1 font-mono">
-        {scans.length} screening assessments recorded
+      <p className="text-xs text-[#A6A7AB] mt-1 ">
+        {scans.length} scan assessments recorded
       </p>
 
       {/* History List */}
@@ -83,13 +83,13 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
                   )}
 
                   <div className="min-w-0 space-y-0.5">
-                    <div className="text-xs font-mono tracking-wider uppercase text-[#A6A7AB]">
+                    <div className="text-xs  tracking-wider uppercase text-[#A6A7AB]">
                       {scan.productIdentification.brand}
                     </div>
                     <div className="text-sm font-semibold text-[#F5F5F5] truncate group-hover:text-white transition-colors">
                       {scan.productIdentification.product}
                     </div>
-                    <div className="text-[11px] font-mono flex items-center gap-2 pt-0.5">
+                    <div className="text-[11px]  flex items-center gap-2 pt-0.5">
                       <span
                         className="font-medium uppercase"
                         style={{ color: riskColor }}

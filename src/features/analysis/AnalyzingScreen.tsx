@@ -88,14 +88,14 @@ export const AnalyzingScreen: React.FC<AnalyzingScreenProps> = ({
 
         {/* Active Stage Detail */}
         <div className="text-center pt-2">
-          <p className="text-xs font-mono text-[#A6A7AB] leading-relaxed">
+          <p className="text-xs  text-[#A6A7AB] leading-relaxed">
             {progress.message || 'Examining product evidence...'}
           </p>
         </div>
       </div>
 
       {/* Footer Info */}
-      <div className="pt-6 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-[#A6A7AB]/60">
+      <div className="pt-6 border-t border-white/[0.06] flex items-center justify-between text-[11px]  text-[#A6A7AB]/60">
         <span>Step {Math.min(progress.stepNumber, 4)} of 4</span>
         <span>Reference verification active</span>
       </div>

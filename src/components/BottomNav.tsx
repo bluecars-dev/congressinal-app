@@ -27,7 +27,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
             }`}
           >
             <Home className="w-5 h-5 stroke-[1.8]" />
-            <span className="text-[10px] font-mono tracking-wider">Home</span>
+            <span className="text-[10px]  tracking-wider">Home</span>
           </button>
 
           {/* Visually Dominant Scan Action (◉) */}
@@ -49,7 +49,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
             }`}
           >
             <History className="w-5 h-5 stroke-[1.8]" />
-            <span className="text-[10px] font-mono tracking-wider">History</span>
+            <span className="text-[10px]  tracking-wider">History</span>
           </button>
         </div>
       </div>

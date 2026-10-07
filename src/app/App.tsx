@@ -163,7 +163,7 @@ const MainAppContent: React.FC = () => {
 
           <div className="space-y-4 pt-6">
 
-            <span className="text-[11px] font-mono tracking-widest text-[#FB7185] uppercase block">
+            <span className="text-[11px]  tracking-widest text-[#FB7185] uppercase block">
               Investigation Error
             </span>
 
@@ -183,12 +183,12 @@ const MainAppContent: React.FC = () => {
 
             <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] space-y-2">
 
-              <div className="flex items-center gap-2 text-[#FB7185] text-xs font-mono">
+              <div className="flex items-center gap-2 text-[#FB7185] text-xs ">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
                 <span>Error details</span>
               </div>
 
-              <p className="text-xs text-[#A6A7AB] font-mono leading-relaxed">
+              <p className="text-xs text-[#A6A7AB]  leading-relaxed">
                 {analysisError}
               </p>
 
@@ -206,7 +206,7 @@ const MainAppContent: React.FC = () => {
             <button
               type="button"
               onClick={handleRetry}
-              className="w-full py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase font-mono hover:bg-[#ececec] transition-all flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase  hover:bg-[#ececec] transition-all flex items-center justify-center gap-2"
             >
               <RotateCcw className="w-4 h-4" />
               <span>Retry Investigation</span>
@@ -218,7 +218,7 @@ const MainAppContent: React.FC = () => {
                 setAnalysisError(null);
                 setIsScannerOpen(true);
               }}
-              className="w-full py-3.5 rounded-full border border-white/15 text-[#F5F5F5] font-semibold text-xs tracking-wider uppercase font-mono hover:bg-white/[0.06] transition-all flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full border border-white/15 text-[#F5F5F5] font-semibold text-xs tracking-wider uppercase  hover:bg-white/[0.06] transition-all flex items-center justify-center gap-2"
             >
               <Camera className="w-4 h-4" />
               <span>Take New Photo</span>
@@ -227,7 +227,7 @@ const MainAppContent: React.FC = () => {
             <button
               type="button"
               onClick={() => setAnalysisError(null)}
-              className="w-full py-2.5 text-xs text-[#A6A7AB] hover:text-[#F5F5F5] font-mono transition-colors text-center"
+              className="w-full py-2.5 text-xs text-[#A6A7AB] hover:text-[#F5F5F5]  transition-colors text-center"
             >
               Return Home
             </button>

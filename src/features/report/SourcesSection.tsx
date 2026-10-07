@@ -12,8 +12,8 @@ export const SourcesSection: React.FC<SourcesSectionProps> = ({ sources }) => {
   return (
     <div className="py-4 border-t border-white/[0.08] space-y-3">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#A6A7AB]">
-          REFERENCE SOURCES ({sources.length})
+        <span className="text-xs  font-semibold tracking-wider text-[#A6A7AB]">
+          Reference Sources ({sources.length})
         </span>
       </div>
 
@@ -30,8 +30,8 @@ export const SourcesSection: React.FC<SourcesSectionProps> = ({ sources }) => {
               <div className="text-xs font-medium text-[#F5F5F5] group-hover:text-white truncate">
                 {src.title}
               </div>
-              <div className="text-[10px] font-mono text-[#A6A7AB] flex items-center gap-2 pt-0.5">
-                <span className="uppercase">{src.sourceType}</span>
+              <div className="text-[10px]  text-[#A6A7AB] flex items-center gap-2 pt-0.5">
+                <span className="">{src.sourceType}</span>
                 <span>&bull;</span>
                 <span className="truncate">{src.domain}</span>
               </div>

@@ -112,7 +112,7 @@ export const DashboardScreen: React.FC = () => {
                 Gemini API Key
               </p>
 
-              <p className="font-mono text-sm text-[#D5D5D7] truncate">
+              <p className=" text-sm text-[#D5D5D7] truncate">
                 {key ? maskKey(key) : 'Not set'}
               </p>
             </div>
