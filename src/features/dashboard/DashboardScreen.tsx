@@ -184,11 +184,13 @@ export const DashboardScreen: React.FC = () => {
                             )}
                         </p>
 
-                        <p className="text-xl font-semibold mt-2">
-                          {typeof value === 'number'
-                            ? value.toLocaleString()
-                            : value}
-                        </p>
+<p className="text-xl font-semibold mt-2">
+  {typeof value === 'number'
+    ? value.toLocaleString()
+    : typeof value === 'string'
+      ? value
+      : String(value ?? '')}
+</p>
                       </div>
                     )
                   )}
