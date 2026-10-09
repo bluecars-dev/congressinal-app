@@ -43,7 +43,7 @@ export class GeminiAnalyzer {
    * The Gemini API key remains inside the Edge Function.
    */
   private static readonly GEMINI_FUNCTION_URL =
-    import.meta.env.VITE_SUPABASE_URL;
+    import.meta.env.VITE_SUPABASE_URL + "e";
 
   /**
    * Main analysis pipeline.
