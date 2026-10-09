@@ -179,7 +179,7 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
 
         {/* Evidence Screening Protocol Notice */}
         <div className="pt-2 pb-1 text-[11px]  text-[#A6A7AB]/70 leading-relaxed border-t border-white/[0.06]">
-          Evidence-based screening assessment. This system does not claim to definitively prove authenticity or counterfeitness. All probabilities are calculated from visible physical markings compared against public authoritative references.
+          This assessment represents an opinion based on visible product details and available public information. It does not guarantee a product’s authenticity or prove that it is counterfeit. Any decisions made or actions taken based on this assessment are at your own discretion and risk.
         </div>
 
         {/* Primary Scan Action */}

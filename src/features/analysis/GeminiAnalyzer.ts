@@ -85,7 +85,7 @@ export class GeminiAnalyzer {
     // 2. Retrieve authoritative web information
     notify(
       'researching_manufacturer',
-      'Fetching authoritative product specifications...',
+      'Fetching product specifications...',
       2
     );
 
@@ -469,7 +469,7 @@ const health: HealthInformation = {
   disclaimer:
     typeof rawHealth.disclaimer === 'string'
       ? rawHealth.disclaimer
-      : 'This is a preliminary screening, not a substitute for professional advice.',
+      : 'This is a preliminary screening for informational purposes only, not medical advice or a substitute for professional evaluation, authentication, or guidance from a qualified professional.',
 };
     const sources: SourceItem[] = (
       parsed.sources || []

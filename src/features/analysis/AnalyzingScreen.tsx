@@ -23,7 +23,7 @@ export const AnalyzingScreen: React.FC<AnalyzingScreenProps> = ({
       {/* Top Header */}
       <div>
         <h2 className="text-3xl font-semibold tracking-tight text-[#F5F5F5]">
-          INVESTIGATING
+          Analyzing Product
         </h2>
       </div>
 
@@ -97,7 +97,6 @@ export const AnalyzingScreen: React.FC<AnalyzingScreenProps> = ({
       {/* Footer Info */}
       <div className="pt-6 border-t border-white/[0.06] flex items-center justify-between text-[11px]  text-[#A6A7AB]/60">
         <span>Step {Math.min(progress.stepNumber, 4)} of 4</span>
-        <span>Reference verification active</span>
       </div>
     </div>
   );
