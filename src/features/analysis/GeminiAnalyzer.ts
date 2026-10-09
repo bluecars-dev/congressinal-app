@@ -379,7 +379,6 @@ Possible Health Concerns:
 
 
 Return ONLY a JSON object matching this structure:
-
 {
   "evidence": [
     {
@@ -392,7 +391,14 @@ Return ONLY a JSON object matching this structure:
       "referenceInfo": "string"
     }
   ],
-  "health": {},
+  "health": {
+    "relevant": false,
+    "category": "",
+    "authenticityConcern": "",
+    "warnings": [],
+    "allergens": [],
+    "disclaimer": "This is a preliminary screening, not a substitute for professional advice."
+  },
   "sources": [
     {
       "id": "s1",
@@ -436,9 +442,35 @@ Allowed source types:
       referenceInfo: e.referenceInfo,
     }));
 
-    const health: HealthInformation =
-      parsed.health;
+    const rawHealth = parsed.health ?? {};
 
+const health: HealthInformation = {
+  relevant: rawHealth.relevant === true,
+  category:
+    typeof rawHealth.category === 'string'
+      ? rawHealth.category
+      : '',
+  authenticityConcern:
+    typeof rawHealth.authenticityConcern === 'string'
+      ? rawHealth.authenticityConcern
+      : '',
+  warnings: Array.isArray(rawHealth.warnings)
+    ? rawHealth.warnings.filter(
+        (item: unknown): item is string =>
+          typeof item === 'string'
+      )
+    : [],
+  allergens: Array.isArray(rawHealth.allergens)
+    ? rawHealth.allergens.filter(
+        (item: unknown): item is string =>
+          typeof item === 'string'
+      )
+    : [],
+  disclaimer:
+    typeof rawHealth.disclaimer === 'string'
+      ? rawHealth.disclaimer
+      : 'This is a preliminary screening, not a substitute for professional advice.',
+};
     const sources: SourceItem[] = (
       parsed.sources || []
     ).map((s: any) => ({
